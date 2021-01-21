@@ -97,7 +97,7 @@ code <- nimbleCode({
 			NB_alive_s[t] ~ dbin(yNB_s[t-1],max(NB_s[t-1],2))         # Survival for NonBreeders at (t-1) 
 			B_alive_s[t]  ~ dbin(yB_s[t-1],max(B_s[t-1],2))           # Survival fo Breeders at (t-1)
 			
-			N_alive_s[t] <- (NB_alive_s[t] + B_alive_s[t]  + max(J4_B_s[t],2) + nb_immigrant_s[t])     # Total number of individuals at t
+			N_alive_s[t] <- (NB_alive_s[t] + B_alive_s[t]  + J4_B_s[t] + nb_immigrant_s[t])     # Total number of individuals at t
 
 			# Breeding probability
 			#-----------------------
@@ -108,7 +108,7 @@ code <- nimbleCode({
 			B_B_s[t]    ~ dbin(bB_s[t-1], max(B_alive_s[t],2))   # Breeding probability for Breeders at (t-1)
 			B_NB_s[t]   <- max(B_alive_s[t],2) - B_B_s[t] 
 
-			NB_B_s[t]   <- (NB_B_i_s[t] + max(J4_B_s[t],2) + nb_immigrant_s[t]) # Total of Nonbreeders at t-1 and J4 at t-1 and migrants that will atempt to breed at t 
+			NB_B_s[t]   <- (NB_B_i_s[t] + J4_B_s[t] + nb_immigrant_s[t]) # Total of Nonbreeders at t-1 and J4 at t-1 and migrants that will atempt to breed at t 
 			NB_s[t]     <- (B_NB_s[t] + max(NB_NB_s[t],2))				        # Total of Nonbreeders at t
 
 			# Breeding success
@@ -536,7 +536,7 @@ code <- nimbleCode({
 			NB_alive_p[t] ~ dbin(yNB_p[t-1],max(NB_p[t-1],2))  # Survival for NonBreeders at (t-1)    
 			B_alive_p[t]  ~ dbin(yB_p[t-1],max(B_p[t-1],2))    # Survival fo Breeders at (t-1)
 			
-			N_alive_p[t] <- (NB_alive_p[t] + B_alive_p[t]  + max(J4_B_p[t],2) + nb_immigrant_p[t]) # Total number of individuals at t 
+			N_alive_p[t] <- (NB_alive_p[t] + B_alive_p[t]  + J4_B_p[t] + nb_immigrant_p[t]) # Total number of individuals at t 
 
 			# Breeding probability
 			#-----------------------
@@ -547,7 +547,7 @@ code <- nimbleCode({
 			B_B_p[t]    ~ dbin(bB_p[t-1], max(B_alive_p[t],2))  # Breeding probability for Breeders at (t-1)
 			B_NB_p[t]   <- max(B_alive_p[t],2) - B_B_p[t] 
 
-			NB_B_p[t] <- NB_B_i_p[t] + max(J4_B_p[t],2) + nb_immigrant_p[t] # Total of Nonbreeders at t-1 and J4 at t-1 and migrants that will atempt to breed at t  
+			NB_B_p[t] <- NB_B_i_p[t] + J4_B_p[t] + nb_immigrant_p[t] # Total of Nonbreeders at t-1 and J4 at t-1 and migrants that will atempt to breed at t  
 			NB_p[t]   <- B_NB_p[t] + NB_NB_p[t]                             # Total of Nonbreeders at t
 
 			# Hatching success
