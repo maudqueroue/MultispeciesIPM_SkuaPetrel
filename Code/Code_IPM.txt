@@ -20,31 +20,31 @@ code <- nimbleCode({
 	# -------------------------------
 
 	##### Juvéniles
-		nF1_s ~ T(dnorm(60, 1),0,)     
+		nF1_s ~ T(dnorm(60, 0.01),0,)     
 		F1_s[1] <- round(nF1_s)
 
-		nJ2_s ~ T(dnorm(20, 1),0,)    
+		nJ2_s ~ T(dnorm(20, 0.01),0,)    
 		J2_s[1] <- round(nJ2_s)
 
-		nJ3_s ~ T(dnorm(5, 1),0,)    
+		nJ3_s ~ T(dnorm(5, 0.01),0,)    
 		J3_s[1] <- round(nJ3_s)
 
-		nJ4_s ~ T(dnorm(5, 1),0,)
+		nJ4_s ~ T(dnorm(5, 0.01),0,)
 		J4_s[1] <- round(nJ4_s)
 
 		J4_NB_s[1] ~ dbin((1-PR_s[1]), max(J4_s[1],2))
 
 		# Adults
-		nFB_s ~ T(dnorm(15, 1),0,)    
+		nFB_s ~ T(dnorm(15, 0.01),0,)    
 		FB_s[1] <- round(nFB_s)
 
-		nSB1_s ~ T(dnorm(40, 1),0,)     
+		nSB1_s ~ T(dnorm(40, 0.01),0,)     
 		SB1_s[1] <- round(nSB1_s)
 
-		nSB2_s ~ T(dnorm(40, 1),0,)     
+		nSB2_s ~ T(dnorm(40, 0.01),0,)     
 		SB2_s[1] <- round(nSB2_s)
 
-		nNB_s ~ T(dnorm(10, 1),0,)    
+		nNB_s ~ T(dnorm(10, 0.01),0,)    
 		NB_s[1] <- round(nNB_s)
 
 	# Priors
@@ -63,7 +63,7 @@ code <- nimbleCode({
 		alpha_s[2] ~ dunif(0,2) 
 		
 		# Count likelihood variance 
-		sigma.counts_s  ~ dunif(1,15)
+		sigma.counts_s  ~ dunif(0,15)
 		sigma2.counts_s <- sigma.counts_s*sigma.counts_s
 		tau.counts_s    <- 1/sigma2.counts_s 
 
@@ -459,31 +459,31 @@ code <- nimbleCode({
 	# -------------------------------
 
 	# Juveniles
-		nF1_p ~ T(dnorm(50, 1),0,)     
+		nF1_p ~ T(dnorm(50, 0.01),0,)     
 		F1_p[1] <- round(nF1_p)
 
-		nJ2_p ~ T(dnorm(30, 1),0,)    
+		nJ2_p ~ T(dnorm(30, 0.01),0,)    
 		J2_p[1] <- round(nJ2_p)
 
-		nJ3_p ~ T(dnorm(20, 1),0,)     
+		nJ3_p ~ T(dnorm(20, 0.01),0,)     
 		J3_p[1] <- round(nJ3_p)
 
-		nJ4_p ~ T(dnorm(30, 1),0,)
+		nJ4_p ~ T(dnorm(30, 0.01),0,)
 		J4_p[1] <- round(nJ4_p)
 
 		J4_NB_p[1] ~ dbin((1-PR_p[1]), max(J4_p[1],2))
 
 	# Adults
-		nRMO_p ~ T(dnorm(80, 1),0,)     
+		nRMO_p ~ T(dnorm(80, 0.01),0,)     
 		RMO_p[1] <- round(nRMO_p)
 
-		nRMP_p ~ T(dnorm(40, 1),0,)     
+		nRMP_p ~ T(dnorm(40, 0.01),0,)     
 		RMP_p[1] <- round(nRMP_p)
 
-		nSB1_p ~ T(dnorm(100, 1),0,)     
+		nSB1_p ~ T(dnorm(100, 0.01),0,)     
 		SB1_p[1] <- round(nSB1_p)
 
-		nNB_p ~ T(dnorm(10, 1),0,)     
+		nNB_p ~ T(dnorm(10, 0.01),0,)     
 		NB_p[1] <- round(nNB_p)
 
 	# Priors
@@ -502,7 +502,7 @@ code <- nimbleCode({
 		alpha_p[2] ~ dunif(0,2)
 		
 		# Count likelihood variance
-		sigma.counts_p ~ dunif(1,100)
+		sigma.counts_p ~ dunif(0,100)
 		sigma2.counts_p <- sigma.counts_p*sigma.counts_p
 		tau.counts_p  <- 1/sigma2.counts_p 
 
